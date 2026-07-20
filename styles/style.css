@@ -143,8 +143,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  font-size:60px;
+  margin-top: 45px;
+  font-size:65px;
   color: black;
   text-decoration: none;
 
@@ -237,7 +237,7 @@ body {
 .menu li a{
     font-size:16px;
     display:block;
-    padding:1px 40px;
+    padding:1px 20px;
     color:black;
     text-decoration:none;
 }
