@@ -1,0 +1,86 @@
+html {
+  background-color: white;
+  
+}
+
+h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  font-size:60px;
+}
+
+
+
+
+
+.navbar{
+    background:white;
+}
+
+.menu{
+    display:flex;
+    justify-content:center;
+    gap: 60px;
+    list-style:none;
+}
+
+.menu li{
+    position:relative;
+}
+.menu li a{
+    font-size:16px;
+    display:block;
+    padding:1px 22px;
+    color:black;
+    text-decoration:none;
+}
+
+.menu li a:hover{
+    color:purple;
+  
+}
+.submenu {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    min-width:150px;
+    background:white;
+    list-style:none;
+    padding: 5px 0;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.submenu li{
+    width:100%;
+}
+
+.submenu li a{
+    display:block;
+    padding: 8px 12px; 
+    text-align:left;
+    white-space: nowrap;
+}
+
+
+.dropdown:hover > .submenu{
+    display:block;
+}
+
+.custom-break {
+  border: none;
+  border-top: 1px solid black;
+  width: 80%;               /* The line fills only 60% of the screen */
+  margin: 20px auto;        /* 20px top/bottom, auto perfectly centers it */
+}
