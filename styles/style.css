@@ -184,6 +184,17 @@ body {
     margin-left: 7.5%;  
 }
 
+/* article page */
+article a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article a:hover {
+  color: purple;
+  opacity: 0.8;
+}
+
 .team-grid {
   display: flex;
   flex-wrap: wrap;
