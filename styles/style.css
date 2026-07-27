@@ -9,6 +9,11 @@ body {
 
 }
 
+main {
+  width: 85%;
+  margin: 0 auto;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -171,8 +176,6 @@ body {
   text-decoration: none;
 }
 
-
-
 .navbar{
     position: sticky;
     background:white;
@@ -182,52 +185,6 @@ body {
     border-top: 1px solid black;
     width: 85%;               
     margin-left: 7.5%;  
-}
-
-/* article page */
-article a {
-  color: inherit;
-  text-decoration: none;
-}
-
-article a:hover {
-  color: purple;
-  opacity: 0.8;
-}
-
-.team-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  margin-left: 7.5%;
-  margin-right: 7.5%;
-  margin-top: 30px;
-}
-
-.team-member {
-  flex: 0 0 calc((100% - 80px) / 5); ;
-  min-width: 0;
-  text-align: left;
-}
-
-.member-photo {
-  height: 200px;
-  width: 200px;
-  background-color: #e0e0e0;
-  border: 1px solid black;
-}
-
-.member-name {
-  margin: 8px 0 0 0;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.member-position {
-  margin: 2px 0 0 0;
-  font-size: 14px;
-  color: #555;
 }
 
 .menu{
@@ -285,9 +242,96 @@ article a:hover {
     display:block;
 }
 
+/* article page */
+article a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article a:hover {
+  color: purple;
+  opacity: 0.8;
+}
+.article-page {
+  width: 70%;
+  padding: 40px;
+}
+
+
+/* promo banner */
+.promo-banner {
+  width: 100%;
+  background-color: purple;
+  padding: 14px 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; 
+  box-sizing: border-box;
+}
+
+.banner-heading {
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.banner-button {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 12px; 
+  font-weight: 700;
+  padding: 6px 16px; 
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+
+/* staff page */
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-left: 7.5%;
+  margin-right: 7.5%;
+  margin-top: 30px;
+}
+
+.team-member {
+  flex: 0 0 calc((100% - 80px) / 5); ;
+  min-width: 0;
+  text-align: left;
+}
+
+.member-photo {
+  height: 200px;
+  width: 200px;
+  background-color: #e0e0e0;
+  border: 1px solid black;
+}
+
+.member-name {
+  margin: 8px 0 0 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.member-position {
+  margin: 2px 0 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
 .footer {
   display: flex;
   justify-content: center; 
   align-items: center;     
   list-style: none;   
 }
+
