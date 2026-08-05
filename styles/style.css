@@ -243,12 +243,12 @@ main {
 }
 
 /* article page */
-article a {
+a {
   color: inherit;
   text-decoration: none;
 }
 
-article a:hover {
+a:hover {
   color: purple;
   opacity: 0.8;
 }
