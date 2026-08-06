@@ -1,119 +1,247 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width", initial-scale=1.0">
-        <title>The Herring</title>
-        <meta
-            name="description"
-            content="The Herring is the independent student-run newspaper of Amsterdam University College" />
-        
-        
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link href="styles/style.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Herring</title>
+    <meta name="description" content="The Herring is the independent student-run newspaper of Amsterdam University College" />
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+      body { 
+        background-image: url('/images/webBackground.png');  
+        background-size: auto; 
+        background-repeat: repeat;
+      }
+      
+      .brand-title {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+      
+      .border-top-thick {
+        border-top: 3px solid #000 !important;
+      }
+      .border-bottom-thick {
+        border-bottom: 3px solid #000 !important;
+      }
+  
+      /* Vertical divider between main feature and sidebar on Desktop */
+      @media (min-width: 768px) {
+        .border-end-md {
+          border-right: 1px solid #ccc !important;
+        }
+      }
+    </style>
+</head>
+<body>
+  <div class="paper-sheet">
     <header>
-
       <div class="banner">
-        <p>Breaking News: Why did the chicken cross the road?</p>
+        <p>WELCOME TO POLITICS (IN THE BUBBLE) PAGE</p>
       </div>
-      <!-- Horizontal alignment of items at top of page ex.(Search, Date, Social media Icon)-->
+      
       <div class="top-page-container mb-0"> 
-
-        <!--search bar-->
         <div class="search-box">
           <button class="btn-search"><i class="fas fa-search"></i></button>
           <input type="text" class="input-search" placeholder="Type to Search...">
         </div>
         
-        <!--date automatically updates-->
         <h4 class="date"><span id="current-date"></span></h4>
-      
 
         <script>
           const dateElement = document.getElementById('current-date');
           const today = new Date();
-    
-  
           const options = { year: 'numeric', month: 'long', day: 'numeric' };
           dateElement.textContent = today.toLocaleDateString('en-US', options);
         </script>
 
-  
-        <!--instagram icon found on the internet-->
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="instagram" viewBox="0 0 16 16">
           <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
         </svg>
-
-    
       </div>
-    
-    <!--Makes clicking on The Herring title a hyperlink to home page-->
-    <h1 class="title mt-2 mb-0"><a href="index.html" style="text-decoration: none; color: inherit;">The Herring</a></h1>
 
-       
-    
-    <!--navigation bar -->
-    <nav class="navbar justify-content-center">
-    <ul class="menu">
+      <h1 class="title mt-2 mb-0"><a href="index.html" style="text-decoration: none; color: inherit;">The Herring</a></h1>
 
-        <li class="dropdown">
-            <a href="#">CULTURE</a>
-            <ul class="submenu">
-                <li><a href="culture-in.html">Inside</a></li>
-                <li><a href="#">Outside</a></li>
-            </ul>
-        </li>
-
-        <li class="dropdown">
-            <a href="#">POLITICS</a>
-            <ul class="submenu">
-                <li><a href="politics-in.html">Inside</a></li>
-                <li><a href="#">Outside</a></li>
-            </ul>
-        </li>
-
-        <li><a href="#">INFORMATIVE</a></li>
-
-        <li><a href="#">INVESTIGATIVE</a></li>
-
-        <li class="dropdown">
-          <a href="#">ABOUT</a>
-          <ul class="submenu">
-              <li><a href="#">Who We Are</a></li>
-              <li><a href="staff.html">Staff</a></li>
-          </ul>
-        </li>
-
-    </ul>
-</nav>
-         
-
+      <nav class="navbar justify-content-center">
+        <ul class="menu">
+            <li class="dropdown">
+                <a href="#">CULTURE</a>
+                <ul class="submenu">
+                    <li><a href="culture-in.html">Inside</a></li>
+                    <li><a href="#">Outside</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">POLITICS</a>
+                <ul class="submenu">
+                    <li><a href="politics-in.html">Inside</a></li>
+                    <li><a href="#">Outside</a></li>
+                </ul>
+            </li>
+            <li><a href="#">INFORMATIVE</a></li>
+            <li><a href="#">INVESTIGATIVE</a></li>
+            <li class="dropdown">
+              <a href="#">ABOUT</a>
+              <ul class="submenu">
+                  <li><a href="#">Who We Are</a></li>
+                  <li><a href="staff.html">Staff</a></li>
+              </ul>
+            </li>
+        </ul>
+      </nav>
     </header>
 
-    
-    <main>
-     
-    
+    <div class="container-fluid px-0" style="width: 85%; margin-left: auto; margin-right: auto;">
+      <br>
+      <section class="row g-4">
+        <!-- Left: Main Featured Article with vertical divider -->
+        <article class="col-md-6 border-end-md pe-md-4">
+          <a href="article.html">
+            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+          </a>
+          <h2 class="h3 mb-2 fw-bold text-dark">
+            <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
+          </h2>
+          <p>More and more Dutch universities are beginning to remove academic distinctions like cum laude and summa cum laude, 
+              citing concerns ranging from student burnout to detrimental effects on the learning experience. Dutch university colleges, 
+              AUC included, have been more resistant to keeping up with this shifting educational environment, 
+              but that may be subject to change – and soon. 
+          </p>
+          <p class="h6 fw-bold text-muted"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
+        </article>
 
-   
-    
-    </main>
+        <!-- Right: Sidebar Small Articles -->
+        <aside class="col-md-3 ps-md-4 d-flex flex-column gap-4">
+          <article class="row g-1 align-items-start">
+              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
+              <h3 class="h5 fw-bold mb-1">
+                Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
+              </h3>
+              <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </article>
 
-   
-    <!--footer for the future-->
+          <article class="row g-1 align-items-start">
+              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
+              <h3 class="h5 fw-bold">
+                Being lost, and finding yourself in the small things in life – A portrait of Rasul Tabiev
+              </h3>
+              <p class="text-muted small">By Myrielle Winkelmann</p>
+          </article>
+        </aside>
+
+        <aside class="col-md-3 ps-md-4 d-flex flex-column gap-4">
+          <article class="row g-1 align-items-start">
+              <img src="images/smiley.jpeg" class="img-fluid" alt="Small graduation smiley">
+              <h3 class="h5 fw-bold mb-1">
+                  Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
+              </h3>
+              <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </article>
+
+          <article class="row g-1 align-items-start">
+              <img src="images/smiley.jpeg" class="img-fluid" alt="Small graduation smiley">
+              <h3 class="h5 fw-bold mb-1">
+                Being lost, and finding yourself in the small things in life – A portrait of Rasul Tabiev
+              </h3>
+              <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </article>
+        </aside>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2 class="h3 fw-bold mb-4">Most Read Today</h2>
+        <div class="row g-4 mb-3">
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+            <h3 class="h5 fw-bold mb-1">
+              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
+            </h3>
+            <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </div>
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+            <h3 class="h5 fw-bold mb-1">
+              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
+            </h3>
+            <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </div>
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+            <h3 class="h5 fw-bold mb-1">
+              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
+            </h3>
+            <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </div>
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+            <h3 class="h5 fw-bold mb-1">
+              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
+            </h3>
+            <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <div class="promo-banner mb-2">
+          <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
+          <a href="https://theherring.org" class="banner-button">Sign up here!</a>
+        </div>
+      </section>
+
+      <hr>
+
+      <div id="article-feed" class="container my-4">
+        <article class="row py-4 border-bottom align-items-center">
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid rounded" alt="Show preview">
+          </div>
+          <div class="col-md-9">
+            <h2 class="h4 fw-bold">The Leipzig Underground Scene, Understanding His ‘Germanness’, and Research on Gay Media and Life: A Portrait of Robert Stampa</h2>
+            <p class="text-secondary">Robert Stampa, a third-year Humanities student, is a familiar face to a lot of students. Walking with Robert from the Academic Building to the dorms would mean seeing him stop, wave, and have conversations with at least ten other people. The graduating student’s youthful demeanour would make many assume that he is of the same age group as most others in AUC; however, he has actually just turned 33. Before AUC, he worked for more than ten years in the German underground and counterculture scene, while also doing other jobs on the side, including carpentry. Many fixtures in his dorm room, including his platform bed, were built by Robert himself.
+            </p>
+            <p class="small text-uppercase text-muted">By CADENCE CHUA</p>
+          </div>
+        </article>
+
+        <article class="row py-4 border-bottom align-items-center">
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid rounded" alt="Show preview">
+          </div>
+          <div class="col-md-6">
+            <h2 class="h4 fw-bold">Community, Neuroscience and a Mind Set on Discovery: A portrait of Greta Boccaletti</h2>
+            <p class="text-secondary">Some kind of byline.</p>
+            <p class="small text-uppercase text-muted">By MARIACHIARA CATANZARITI</p>
+          </div>
+        </article>
+
+        <article class="row py-4 border-bottom align-items-center">
+          <div class="col-md-3">
+            <img src="images/smiley.jpeg" class="img-fluid rounded" alt="Show preview">
+          </div>
+          <div class="col-md-3">
+            <h2 class="h4 fw-bold">Community, Neuroscience and a Mind Set on Discovery: A portrait of Greta Boccaletti</h2>
+            <p class="text-secondary">Some kind of byline.</p>
+            <p class="small text-uppercase text-muted">By MARIACHIARA CATANZARITI</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
     <footer>
       <p class="footer"></p>
     </footer>
-    <!--bootstrap javascript-->
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    
-      </body>
+  </div>
 
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
 </html>

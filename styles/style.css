@@ -6,13 +6,23 @@ html {
 }
 body {
     font-family: "Times New Roman", Times, serif;
-
 }
 
 main {
   width: 85%;
   margin: 0 auto;
   
+}
+
+.paper-sheet {
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 0px;
+  
+  
+  background-color: #fbf9f3; 
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  border-radius: 2px; 
 }
 
 .grid-container {
