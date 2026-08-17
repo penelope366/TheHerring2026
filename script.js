@@ -14,4 +14,3 @@ searchForm.addEventListener('submit', function(event) {
         executeSearch(query);
     }
 });
-
