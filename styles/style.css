@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+
 html {
   background-color: white;
 }
 * {
   box-sizing: border-box;
+  font-family: "Georgia", serif;
 }
 body {
-    font-family: "Times New Roman", Times, serif;
+  font-family: "Georgia", serif;
 }
 
 main {
@@ -351,13 +355,149 @@ a:hover {
   font-size: 20px;
 }
 
-.footer {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #a380bc;
-  color: black;
+/* Main Footer Container */
+.site-footer {
+  background-color: #f7f7f5;
+  border-top: 1px solid #e5e5e5;
+  padding: 40px 60px;
+  position: relative;
+  color: #111111;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1.2fr;
+  align-items: stretch;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  padding: 10px 40px;
   display: flex;
-  justify-content: center; 
-  align-items: center;     
-  list-style: none;   
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Vertical Dividers */
+.footer-col:not(:last-child) {
+  border-right: 1px solid #dbdbdb;
+}
+
+/* --- Column 1: Brand & Socials --- */
+
+.col-left-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #111111;
+  font-size: 20px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.social-links a:hover {
+  opacity: 0.7;
+}
+
+/* --- Column 2: Archive & Mission --- */
+.col-center {
+  align-items: center;
+  text-align: center;
+}
+
+.archive-btn {
+  background-color: purple;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 14px 45px;
+  display: inline-block;
+  margin-bottom: 25px;
+  transition: background-color 0.2s;
+}
+
+.archive-btn:hover {
+  background-color: plum;
+}
+
+/* --- Column 3: Links --- */
+.footer-nav li {
+  margin-bottom: 18px;
+}
+
+.footer-nav a {
+  color: #111111;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid purple;
+  transition: opacity 0.2s;
+}
+
+/* Remove the bottom border from the last link to match the design */
+.footer-nav li:last-child a {
+  border-bottom: none;
+}
+
+.footer-nav a:hover {
+  opacity: 0.7;
+}
+
+/* --- Back to Top Floating Button --- */
+.back-to-top {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 38px;
+  height: 38px;
+  background-color: purple;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.back-to-top:hover {
+  background-color: plum;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-col {
+    padding: 0;
+    border-right: none !important;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 25px;
+  }
+
+  .footer-col:last-child {
+    border-bottom: none;
+  }
+
+  .col-left-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
