@@ -57,92 +57,241 @@ main {
 
 
 
+.actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .actions {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+
+
 .top-page-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 columns of exactly equal width */
-  align-items: center;                /* Vertically centers items */
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas:
+    "instagram date actions";
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
-  padding: 10px;
-
+  padding: 10px 20px;
+  gap: 20px;
 }
-.instagram{
-  box-sizing: border-box;
+
+
+.instagram {
+  grid-area: instagram;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 10px;
-  margin-left: 20%;
+  margin-left: 16%;
 }
 
 
 
 .date {
+  grid-area: date;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  margin-top: 12px;
+  white-space: nowrap;
 }
+
+
+.newsletterButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 55%;
+
+  width: 90px;
+  min-height: 36px;
+  box-sizing: border-box;
+
+  padding: 6px 10px;
+
+  background-color: #662d91;
+  color: white;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  border-radius: 6px;
+  border: none;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease,
+              transform 0.1s ease;
+}
+
 @media (max-width: 768px) {
-  .date {
-    display: none !important; 
+  .newsletterButton {
+    display: none !important;
   }
 }
 
 .my-button {
-  /* Layout & Sizing */
-  display: inline-block;
-  width:auto;
-  width: 100%;           
-  max-width: 70px;      /* Caps the length at 250 pixels */
-  margin: 0 auto;
-  margin-right: 20%;
-  
-  display: inline-flex;     /* Enables flexbox alignment */
-  justify-content: center;  /* Centers text horizontally */
-  align-items: center;      /* Centers text vertically */
-  text-align: center;       /* Fallback horizontal centering */
-  
-  /* Retaining your previous styles */
-  padding: 4px 2px;
-  text-decoration: none;
-  /* Colors & Text */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right:15%;
+
+  width: 90px;
+  min-height: 36px;
+  box-sizing: border-box;
+
+  padding: 6px 10px;
+
   background-color: #662d91;
   color: white;
+  text-decoration: none;
+
   font-size: 16px;
   font-weight: 500;
-  
 
-  /* Shape & Borders */
-  border-radius: 4px;
-  
+  border-radius: 6px;
+  border: none;
+
   cursor: pointer;
-  
-  /* Smooth Hover Animation */
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease,
+              transform 0.1s ease;
 }
 
-/* Hover Effect (Mouse Over) */
+@media (max-width: 768px) {
+  .my-button {
+    grid-area: actions;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: auto !important;
+    max-width: none !important;
+
+    padding: 4px 6px;
+    margin-left: auto;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .instagram {
+    grid-area: instagram;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    margin-left:7%;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    grid-area: instagram !important;
+  }
+
+  .my-button {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    grid-area: actions !important;
+  }
+}
+
+.newsletterButton:hover,
 .my-button:hover {
   background-color: black;
   color: white;
-  border-color:black;
 }
 
-/* Active Effect (Clicking Down) */
+
+.newsletterButton:active,
 .my-button:active {
   transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
-  .my-button {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  margin-right: -100px;
+  .top-page-container {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "instagram actions";
 
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .date {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+
+  .top-page-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "instagram actions";
+
+    align-items: center;
+
+    width: 100%;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  /* Instagram - LEFT */
+  .instagram {
+    grid-area: instagram !important;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-left: 7%;
+  }
+
+  /* Hide date */
+  .date {
+    display: none !important;
+  }
+
+  /* Hide newsletter */
+  .newsletterButton {
+    display: none !important;
+  }
+
+  /* Actions - RIGHT */
+  .actions {
+    grid-area: actions !important;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 10px;
+    width: auto;
+  }
+
+  /* Donate button */
+  .my-button {
+    grid-area: auto !important;
+
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: auto !important;
+    max-width: none !important;
+
+    min-height: 36px;
+    padding: 4px 8px;
+
+    margin: 0;
   }
 }
 
