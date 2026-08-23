@@ -1,368 +1,382 @@
-
 <?php get_header(); ?>
 
+<div class="container-fluid px-0" style="width: 85%; margin-left: auto; margin-right: auto;">
+  
+  <!-- MAIN HERO SECTION --> 
+  <br>
+  <section class="row g-4 align-items-start">
+  <?php
+  $hero_query = new WP_Query( array( 'posts_per_page' => 5 ) );
+  $post_count = 0;
 
+  if ( $hero_query->have_posts() ) :
+    while ( $hero_query->have_posts() ) : $hero_query->the_post();
+      $post_count++;
 
-    <div class="container-fluid px-0" style="width: 85%; margin-left: auto; margin-right: auto;">
-      <br>
-      <section class="row g-4">
-        <!-- Left: Main Featured Article with vertical divider -->
+      // Article 1
+      if ( $post_count === 1 ) :
+  ?>
         <article class="col-md-6 border-end-md pe-md-4">
-          <a href="article.html">
-            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'large', array( 'class' => 'a4-landscape-img img-fluid w-100 mb-2' ) );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/logo.png" class="a4-landscape-img img-fluid w-100 mb-2">';
+            }
+            ?>
           </a>
           <h2 class="h3 mb-2 text-dark">
-            <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h2>
-          <p>More and more Dutch universities are beginning to remove academic distinctions like cum laude and summa cum laude, 
-              citing concerns ranging from student burnout to detrimental effects on the learning experience. Dutch university colleges, 
-              AUC included, have been more resistant to keeping up with this shifting educational environment, 
-              but that may be subject to change – and soon. 
+          <?php the_excerpt(); ?>
+          <p class="h6 fw-bold text-muted">
+            By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?>
           </p>
-          <p class="h6 fw-bold text-muted"><a href="staff-member.html">By Myrielle Winkelmann</a> | 18 August 2026</p>
         </article>
 
-        <!-- Right: Sidebar Small Articles -->
+        <!-- Open First Sidebar Column -->
         <aside class="col-md-3 ps-md-4 d-flex flex-column gap-4">
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Cadence Chua, Komari Machida and Saanika Sudeep Manithara</a> | 18 August 2026</p>
-          </article>
 
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Komari Machida & Saanika Sudeep Manithara</a> | 18 August 2026</p>
-          </article>
+  <?php 
+      elseif ( $post_count === 2 || $post_count === 3 ) : 
+  ?>
+        <article class="row g-1 align-items-start">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100' ) );
+            }
+            ?>
+          </a>
+          <h3 class="h5 mb-1">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h3>
+          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+        </article>
+
+  <?php 
+        if ( $post_count === 3 ) : 
+  ?>
         </aside>
-
         <aside class="col-md-3 ps-md-4 d-flex flex-column gap-4">
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a> | 18 August 2026</p>
-          </article>
+  <?php 
+        endif;
 
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a> | 18 August 2026</p>
-          </article>
+      else : 
+  ?>
+        <article class="row g-1 align-items-start">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100' ) );
+            }
+            ?>
+          </a>
+          <h3 class="h5 mb-1">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h3>
+          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+        </article>
+  <?php 
+      endif;
+    endwhile;
+    wp_reset_postdata();
+  ?>
         </aside>
-      </section>
+  <?php endif; ?>
+  </section>
 
-      <hr>
+  <hr class="my-4">
 
-      <!-- Horizontal Break of Articles from Each Columns -->
-      <section>
-        <h2 class="h3 fm-bold mb-4">Exploring the Columns</h2>
-        <div class="row g-4 mb-3">
-          <div class="col-md-3">
-            <a href="article.html">
-            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley"></a>
-            <p class="mb-1 text-uppercase small text-muted fw-bold"><a href="column.html">INFORMATIVE</a> | 18 AUGUST 2026</p>
-            <h3 class="h5 mb-1"><a href="article.html">
-              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-            </h3>
-            <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
-          </div>
-          <div class="col-md-3">
-            <a href="article.html">
-            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley"></a>
-            <p class="mb-1 text-uppercase small text-muted fw-bold"><a href="column.html">INFORMATIVE</a> | 18 AUGUST 2026</p>
-            <h3 class="h5 mb-1"><a href="article.html">
-              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-            </h3>
-            <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
-          </div>
-          <div class="col-md-3">
-            <a href="article.html">
-            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley"></a>
-            <p class="mb-1 text-uppercase small text-muted fw-bold"><a href="column.html">INFORMATIVE</a> | 18 AUGUST 2026</p>
-            <h3 class="h5 mb-1"><a href="article.html">
-              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-            </h3>
-            <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
-          </div>
-          <div class="col-md-3">
-            <a href="article.html">
-            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley"></a>
-            <p class="mb-1 text-uppercase small text-muted fw-bold"><a href="column.html">INFORMATIVE</a> | 18 AUGUST 2026</p>
-            <h3 class="h5 mb-1"><a href="article.html">
-              Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-            </h3>
-            <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
-          </div>
-        </div>
-      </section>
-
-      <br>
-
-      <section>
-        <a href="#" class="promo-banner mb-2">
-            <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
+  <!-- INFORMATIVE SECTION -->
+  <h2 class="h3 fw-bold mb-4">Informative</h2>
+  <div class="row g-4 mb-3">
+  <?php
+  $informative_query = new WP_Query( array( 
+    'category_name'  => 'informative', 
+    'posts_per_page' => 4
+  ) );
+  if ( $informative_query->have_posts() ) :
+    while ( $informative_query->have_posts() ) : $informative_query->the_post();
+        $categories = get_the_category();
+        $category_name = ! empty( $categories ) ? esc_html( $categories[0]->name ) : 'Uncategorized';
+        $category_link = ! empty( $categories ) ? esc_url( get_category_link( $categories[0]->term_id ) ) : '#';
+  ?>
+      <div class="col-md-3">
+        <a href="<?php the_permalink(); ?>">
+          <?php 
+          if ( has_post_thumbnail() ) {
+            the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100 mb-2' ) );
+          } else {
+            echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100 mb-2" alt="' . esc_attr( get_the_title() ) . '">';
+          }
+          ?>
         </a>
-      </section>
-
-      <br>
-
-      <!-- HERO / MAIN STORIES SECTION -->
-      <div style="display: flex; align-items: center; gap: 1rem; ">
-        <h2 class="h2 mb-3 mt-2">*Column Name*</h2>
-        <hr style="flex-grow: 1; border: none; border-top: 1px solid black;">
-      </div>
-
-<section class="row g-4">
-      
-  <!-- Left: Main Featured Article (Column 7/12) -->
-  <article class="col-md-7 border-end-md pe-md-4">
-    <a href="article.html">
-      <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
-    </a>
-    <h2 class="h3 mb-2 text-dark">
-      <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-
-    </h2>
-    <p class="h6 text-muted"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
-  </article>
-
-  <!-- Right: Sidebar Small Articles (Column 5/12) -->
-  <aside class="col-md-5 ps-md-4 d-flex flex-column gap-4">
-    
-    <!-- Small Article 1 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
+        <p class="mb-1 text-uppercase small text-muted fw-bold">
+          <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a> | <?php the_time( 'j F Y' ); ?>
+        </p>
         <h3 class="h5 mb-1">
-          
-The Leipzig Underground Scene, Understanding His ‘Germanness’, and Research on Gay Media and Life: A Portrait of Robert Stampa
+          <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
+        <p class="text-muted small mb-0">By <?php the_author(); ?></p>
       </div>
-    </article>
+  <?php 
+    endwhile;
+    wp_reset_postdata();
+  endif; 
+  ?>
+  </div>
 
-    <!-- Small Article 2 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          Being lost, and finding yourself in the small things in life – A portrait of Rasul Tabiev
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
-
-    <!-- Small Article 3 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          Being lost, and finding yourself in the small things in life – A portrait of Rasul Tabiev
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
-
-    <!-- Small Article 4 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
-
+  <section class="my-4">
     <a href="#" class="promo-banner mb-2">
-            <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
+      <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
     </a>
-    
+  </section>
 
-  </aside>
-</section>
+  <!-- CULTURE SECTION -->
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <h2 class="h2 mb-3 mt-2">Culture</h2>
+    <hr style="flex-grow: 1; border: none; border-top: 1px solid black;">
+  </div>
 
-      <hr>
+  <section class="row g-4 align-items-start mb-4">
+  <?php
+  $culture_query = new WP_Query( array( 
+    'category_name'  => 'culture',
+    'posts_per_page' => 5
+  ) );
+  $culture_count = 0;
 
-      <br>
+  if ( $culture_query->have_posts() ) :
+    while ( $culture_query->have_posts() ) : $culture_query->the_post();
+      $culture_count++;
 
-
-      <section class="row g-4">
-
-        <!-- Right: Sidebar Small Articles -->
-        <aside class="col-md-3 d-flex flex-column gap-4">
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Cadence Chua</a> | 18 August 2026</p>
-          </article>
-
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Komari Machida & Saanika Sudeep Manithara</a> | 18 August 2026</p>
-          </article>
-        </aside>
-
-        <aside class="col-md-3 pe-md-4 d-flex flex-column gap-4">
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a> | 18 August 2026</p>
-          </article>
-
-          <article class="row g-1 align-items-start">
-            <a href="article.html">
-              <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-            </a>
-              </a><h3 class="h5 mb-1">
-                <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
-              </h3>
-              <p class="text-muted small mb-0"><a href="staff-member.html">By Myrielle Winkelmann</a> | 18 August 2026</p>
-          </article>
-        </aside>
-        
-
-        <!-- Left: Main Featured Article with vertical divider -->
-        <article class="col-md-6 border-start-md ps-md-4">
-          <a href="article.html">
-            <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
+      if ( $culture_count === 1 ) :
+  ?>
+        <article class="col-md-7 border-end-md pe-md-4">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'large', array( 'class' => 'a4-landscape-img img-fluid w-100 mb-2' ) );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100 mb-2" alt="Featured Article">';
+            }
+            ?>
           </a>
           <h2 class="h3 mb-2 text-dark">
-            <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h2>
-          <p>More and more Dutch universities are beginning to remove academic distinctions like cum laude and summa cum laude, 
-              citing concerns ranging from student burnout to detrimental effects on the learning experience. Dutch university colleges, 
-              AUC included, have been more resistant to keeping up with this shifting educational environment, 
-              but that may be subject to change – and soon. 
-          </p>
-          <p class="h6 text-muted"><a href="staff-member.html">By Myrielle Winkelmann</a> | 18 August 2026</p>
+          <p class="h6 text-muted">By <?php the_author(); ?></p>
         </article>
 
-      </section>
-      <br>
+        <aside class="col-md-5 ps-md-4 d-flex flex-column gap-4">
+  <?php 
+      else : 
+  ?>
+        <article class="row g-3 align-items-start">
+          <div class="col-4">
+            <a href="<?php the_permalink(); ?>">
+              <?php 
+              if ( has_post_thumbnail() ) {
+                the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100' ) );
+              } else {
+                echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100" alt="Article">';
+              }
+              ?>
+            </a>
+          </div>
+          <div class="col-8">
+            <h3 class="h5 mb-1">
+              <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+            </h3>
+            <p class="text-muted small mb-0">By <?php the_author(); ?></p>
+          </div>
+        </article>
+  <?php 
+      endif;
+    endwhile;
+    wp_reset_postdata();
+  ?>
+        <a href="#" class="promo-banner mb-2">
+          <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
+        </a>
+      </aside>
+  <?php endif; ?>
+  </section>
 
-       <!-- HERO / MAIN STORIES SECTION -->
-       <div style="display: flex; align-items: center; gap: 1rem; ">
-        <h2 class="h2 mb-3 mt-2">*Column Name*</h2>
-        <hr style="flex-grow: 1; border: none; border-top: 1px solid black;">
-      </div>
+  <hr class="my-4">
 
-<section class="row g-4">
-      
+  <!-- POLITICS SECTION -->
+  <section class="row g-4 align-items-start mb-4">
+  <?php
+  $politics_query = new WP_Query( array( 
+    'category_name'  => 'politics',
+    'posts_per_page' => 5
+  ) );
+  $politics_count = 0;
 
-  <!-- Left: Sidebar Small Articles (Column 5/12) -->
-  <aside class="col-md-5 pe-md-4 d-flex flex-column gap-4">
-    
-    <!-- Small Article 1 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          
-The Leipzig Underground Scene, Understanding His ‘Germanness’, and Research on Gay Media and Life: A Portrait of Robert Stampa
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
+  if ( $politics_query->have_posts() ) :
+    while ( $politics_query->have_posts() ) : $politics_query->the_post();
+      $politics_count++;
 
-    <!-- Small Article 2 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          Being lost, and finding yourself in the small things in life – A portrait of Rasul Tabiev
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
+      if ( $politics_count === 1 ) :
+  ?>
+        <aside class="col-md-3 d-flex flex-column gap-4">
+  <?php endif; ?>
 
-    <!-- Small Article 3 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          Being lost, and finding yourself in the small things in life – A portrait of Rasul Tabiev
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
+  <?php if ( $politics_count === 1 || $politics_count === 2 ) : ?>
+        <article class="row g-1 align-items-start">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100' ) );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100" alt="Article">';
+            }
+            ?>
+          </a>
+          <h3 class="h5 mb-1">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h3>
+          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+        </article>
+  <?php endif; ?>
 
-    <!-- Small Article 4 -->
-    <article class="row g-3 align-items-start">
-      <div class="col-4">
-        <img src="images/smiley.jpeg" class="img-fluid w-100" alt="Small graduation smiley">
-      </div>
-      <div class="col-8">
-        <h3 class="h5 mb-1">
-          Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude
-        </h3>
-        <p class="text-muted small mb-0">By Myrielle Winkelmann</p>
-      </div>
-    </article>
-  </aside>
+  <?php if ( $politics_count === 2 ) : ?>
+        </aside>
+        <aside class="col-md-3 pe-md-4 d-flex flex-column gap-4">
+  <?php endif; ?>
 
-    <!-- Left: Main Featured Article (Column 7/12) -->
-  <article class="col-md-7 border-start-md ps-md-4">
-    <a href="article.html">
-      <img src="images/smiley.jpeg" class="img-fluid w-100 mb-2" alt="Small graduation smiley">
-    </a>
-    <h2 class="h3 mb-2 text-dark">
-      <a href="article.html">Disappearing Distinctions: Why AUC is Considering Removing Summa cum Laude</a>
+  <?php if ( $politics_count === 3 || $politics_count === 4 ) : ?>
+        <article class="row g-1 align-items-start">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100' ) );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100" alt="Article">';
+            }
+            ?>
+          </a>
+          <h3 class="h5 mb-1">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h3>
+          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+        </article>
+  <?php endif; ?>
 
-    </h2>
-    <p class="h6 text-muted"><a href="staff-member.html">By Myrielle Winkelmann</a></p>
-  </article>
-</section>
+  <?php if ( $politics_count === 4 ) : ?>
+        </aside>
+  <?php endif; ?>
+
+  <?php 
+      if ( $politics_count === 5 ) : 
+  ?>
+        <article class="col-md-6 border-start-md ps-md-4">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'large', array( 'class' => 'a4-landscape-img img-fluid w-100 mb-2' ) );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100 mb-2" alt="Featured Article">';
+            }
+            ?>
+          </a>
+          <h2 class="h3 mb-2 text-dark">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h2>
+          <?php the_excerpt(); ?>
+          <p class="h6 text-muted">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+        </article>
+  <?php 
+      endif;
+    endwhile;
+    wp_reset_postdata();
+  endif; 
+  ?>
+  </section>
+
+  <br>
+
+  <!-- SATIRE SECTION -->
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <h2 class="h2 mb-3 mt-2">Satire</h2>
+    <hr style="flex-grow: 1; border: none; border-top: 1px solid black;">
+  </div>
+
+  <section class="row g-4 align-items-start mb-4">
+  <?php
+  $satire_query = new WP_Query( array( 
+    'category_name'  => 'satire',
+    'posts_per_page' => 5
+  ) );
+  $satire_count = 0;
+
+  if ( $satire_query->have_posts() ) :
+    while ( $satire_query->have_posts() ) : $satire_query->the_post();
+      $satire_count++;
+
+      if ( $satire_count === 1 ) :
+  ?>
+        <aside class="col-md-5 pe-md-4 d-flex flex-column gap-4">
+  <?php endif; ?>
+
+  <?php if ( $satire_count >= 1 && $satire_count <= 4 ) : ?>
+        <article class="row g-3 align-items-start">
+          <div class="col-4">
+            <a href="<?php the_permalink(); ?>">
+              <?php 
+              if ( has_post_thumbnail() ) {
+                the_post_thumbnail( 'medium', array( 'class' => 'a4-landscape-img img-fluid w-100' ) );
+              } else {
+                echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100" alt="Article">';
+              }
+              ?>
+            </a>
+          </div>
+          <div class="col-8">
+            <h3 class="h5 mb-1">
+              <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+            </h3>
+            <p class="text-muted small mb-0">By <?php the_author(); ?></p>
+          </div>
+        </article>
+  <?php endif; ?>
+
+  <?php if ( $satire_count === 4 ) : ?>
+        </aside>
+  <?php endif; ?>
+
+  <?php 
+      if ( $satire_count === 5 ) : 
+  ?>
+        <article class="col-md-7 border-start-md ps-md-4">
+          <a href="<?php the_permalink(); ?>">
+            <?php 
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'large', array( 'class' => 'a4-landscape-img img-fluid w-100 mb-2' ) );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/images/smiley.jpeg" class="a4-landscape-img img-fluid w-100 mb-2" alt="Featured Article">';
+            }
+            ?>
+          </a>
+          <h2 class="h3 mb-2 text-dark">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h2>
+          <p class="h6 text-muted">By <?php the_author(); ?></p>
+        </article>
+  <?php 
+      endif;
+    endwhile;
+    wp_reset_postdata();
+  endif; 
+  ?>
+  </section>
+
+</div>
 
 <br>
 
-    
-    </div>
 
-    <?php get_footer(); ?>
- 
-   
+<?php get_footer(); ?>
