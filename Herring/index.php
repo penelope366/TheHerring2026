@@ -12,6 +12,9 @@
   if ( $hero_query->have_posts() ) :
     while ( $hero_query->have_posts() ) : $hero_query->the_post();
       $post_count++;
+      $categories = get_the_category();
+        $category_name = ! empty( $categories ) ? esc_html( $categories[0]->name ) : 'Uncategorized';
+        $category_link = ! empty( $categories ) ? esc_url( get_category_link( $categories[0]->term_id ) ) : '#';
 
       // Article 1
       if ( $post_count === 1 ) :
@@ -26,12 +29,15 @@
             }
             ?>
           </a>
+          <p class="mb-1 text-uppercase medium text-muted fw-bold">
+          <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+        </p>
           <h2 class="h3 mb-2 text-dark">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h2>
           <?php the_excerpt(); ?>
           <p class="h6 fw-bold text-muted">
-            By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?>
+            By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?>
           </p>
         </article>
 
@@ -49,10 +55,13 @@
             }
             ?>
           </a>
-          <h3 class="h5 mb-1">
+          <p class="text-uppercase small text-muted fw-bold mb-1 mt-1">
+          <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+          </p>
+          <h3 class="h5 mt-0 mb-1">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h3>
-          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+          <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
 
   <?php 
@@ -73,10 +82,13 @@
             }
             ?>
           </a>
-          <h3 class="h5 mb-1">
+          <p class="text-uppercase small text-muted fw-bold mb-1 mt-1">
+          <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+          </p>
+          <h3 class="h5 mt-0 mb-1">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h3>
-          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+          <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
   <?php 
       endif;
@@ -90,7 +102,7 @@
   <hr class="my-4">
 
   <!-- INFORMATIVE SECTION -->
-  <h2 class="h3 fw-bold mb-4">Informative</h2>
+  <h2 class="h3 mb-4">Informative</h2>
   <div class="row g-4 mb-3">
   <?php
   $informative_query = new WP_Query( array( 
@@ -119,7 +131,7 @@
         <h3 class="h5 mb-1">
           <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
-        <p class="text-muted small mb-0">By <?php the_author(); ?></p>
+        <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?></p>
       </div>
   <?php 
     endwhile;
@@ -129,7 +141,7 @@
   </div>
 
   <section class="my-4">
-    <a href="#" class="promo-banner mb-2">
+    <a href="#footer" class="promo-banner mb-2">
       <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
     </a>
   </section>
@@ -151,6 +163,9 @@
   if ( $culture_query->have_posts() ) :
     while ( $culture_query->have_posts() ) : $culture_query->the_post();
       $culture_count++;
+      $categories = get_the_category();
+        $category_name = ! empty( $categories ) ? esc_html( $categories[0]->name ) : 'Uncategorized';
+        $category_link = ! empty( $categories ) ? esc_url( get_category_link( $categories[0]->term_id ) ) : '#';
 
       if ( $culture_count === 1 ) :
   ?>
@@ -164,10 +179,13 @@
             }
             ?>
           </a>
+          <p class="mb-1 text-uppercase medium text-muted fw-bold">
+          <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+        </p>
           <h2 class="h3 mb-2 text-dark">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h2>
-          <p class="h6 text-muted">By <?php the_author(); ?></p>
+          <p class="h6 text-muted">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
 
         <aside class="col-md-5 ps-md-4 d-flex flex-column gap-4">
@@ -187,10 +205,13 @@
             </a>
           </div>
           <div class="col-8">
+            <p class="mb-1 text-uppercase small text-muted fw-bold">
+            <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+            </p>
             <h3 class="h5 mb-1">
               <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h3>
-            <p class="text-muted small mb-0">By <?php the_author(); ?></p>
+            <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
           </div>
         </article>
   <?php 
@@ -198,16 +219,18 @@
     endwhile;
     wp_reset_postdata();
   ?>
-        <a href="#" class="promo-banner mb-2">
-          <p class="banner-heading">Enjoying the Herring so far? Sign up for our newsletter to read more!</p>
-        </a>
       </aside>
   <?php endif; ?>
   </section>
 
-  <hr class="my-4">
 
   <!-- POLITICS SECTION -->
+  <div style="display: flex; align-items: center; gap: 1rem;">
+   <hr style="flex-grow: 1; border: none; border-top: 1px solid black;">
+  <h2 class="h2 mb-3 mt-2">Politics</h2>
+
+  </div>
+
   <section class="row g-4 align-items-start mb-4">
   <?php
   $politics_query = new WP_Query( array( 
@@ -219,10 +242,14 @@
   if ( $politics_query->have_posts() ) :
     while ( $politics_query->have_posts() ) : $politics_query->the_post();
       $politics_count++;
+      $categories = get_the_category();
+        $category_name = ! empty( $categories ) ? esc_html( $categories[0]->name ) : 'Uncategorized';
+        $category_link = ! empty( $categories ) ? esc_url( get_category_link( $categories[0]->term_id ) ) : '#';
+      
 
       if ( $politics_count === 1 ) :
   ?>
-        <aside class="col-md-3 d-flex flex-column gap-4">
+        <aside class="col-md-3 pe-md-4 d-flex flex-column gap-4">
   <?php endif; ?>
 
   <?php if ( $politics_count === 1 || $politics_count === 2 ) : ?>
@@ -236,10 +263,13 @@
             }
             ?>
           </a>
+          <p class="mb-1 text-uppercase small text-muted fw-bold">
+            <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+            </p>
           <h3 class="h5 mb-1">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h3>
-          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+          <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
   <?php endif; ?>
 
@@ -259,10 +289,13 @@
             }
             ?>
           </a>
+          <p class="mb-1 text-uppercase small text-muted fw-bold">
+            <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+            </p>
           <h3 class="h5 mb-1">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h3>
-          <p class="text-muted small mb-0">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+          <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
   <?php endif; ?>
 
@@ -283,11 +316,14 @@
             }
             ?>
           </a>
+          <p class="mb-1 text-uppercase medium text-muted fw-bold">
+            <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+            </p>
           <h2 class="h3 mb-2 text-dark">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h2>
           <?php the_excerpt(); ?>
-          <p class="h6 text-muted">By <?php the_author(); ?> | <?php the_time( 'j F Y' ); ?></p>
+          <p class="h6 text-muted">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
   <?php 
       endif;
@@ -297,32 +333,33 @@
   ?>
   </section>
 
-  <br>
-
-  <!-- SATIRE SECTION -->
+  <!-- OPINION SECTION -->
   <div style="display: flex; align-items: center; gap: 1rem;">
-    <h2 class="h2 mb-3 mt-2">Satire</h2>
+    <h2 class="h2 mb-3 mt-2">Opinion</h2>
     <hr style="flex-grow: 1; border: none; border-top: 1px solid black;">
   </div>
 
   <section class="row g-4 align-items-start mb-4">
   <?php
-  $satire_query = new WP_Query( array( 
-    'category_name'  => 'satire',
+  $opinion_query = new WP_Query( array( 
+    'category_name'  => 'opinion',
     'posts_per_page' => 5
   ) );
-  $satire_count = 0;
+  $opinion_count = 0;
 
-  if ( $satire_query->have_posts() ) :
-    while ( $satire_query->have_posts() ) : $satire_query->the_post();
-      $satire_count++;
+  if ( $opinion_query->have_posts() ) :
+    while ( $opinion_query->have_posts() ) : $opinion_query->the_post();
+      $opinion_count++;
+      $categories = get_the_category();
+        $category_name = ! empty( $categories ) ? esc_html( $categories[0]->name ) : 'Uncategorized';
+        $category_link = ! empty( $categories ) ? esc_url( get_category_link( $categories[0]->term_id ) ) : '#';
 
-      if ( $satire_count === 1 ) :
+      if ( $opinion_count === 1 ) :
   ?>
         <aside class="col-md-5 pe-md-4 d-flex flex-column gap-4">
   <?php endif; ?>
 
-  <?php if ( $satire_count >= 1 && $satire_count <= 4 ) : ?>
+  <?php if ( $opinion_count >= 1 && $opinion_count <= 4 ) : ?>
         <article class="row g-3 align-items-start">
           <div class="col-4">
             <a href="<?php the_permalink(); ?>">
@@ -336,20 +373,23 @@
             </a>
           </div>
           <div class="col-8">
+          <p class="mb-1 text-uppercase small text-muted fw-bold">
+            <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+            </p>
             <h3 class="h5 mb-1">
               <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h3>
-            <p class="text-muted small mb-0">By <?php the_author(); ?></p>
+            <p class="text-muted small mb-0">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
           </div>
         </article>
   <?php endif; ?>
 
-  <?php if ( $satire_count === 4 ) : ?>
+  <?php if ( $opinion_count === 4 ) : ?>
         </aside>
   <?php endif; ?>
 
   <?php 
-      if ( $satire_count === 5 ) : 
+      if ( $opinion_count === 5 ) : 
   ?>
         <article class="col-md-7 border-start-md ps-md-4">
           <a href="<?php the_permalink(); ?>">
@@ -361,10 +401,13 @@
             }
             ?>
           </a>
+          <p class="mb-1 text-uppercase medium text-muted fw-bold">
+            <a href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>
+            </p>
           <h2 class="h3 mb-2 text-dark">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h2>
-          <p class="h6 text-muted">By <?php the_author(); ?></p>
+          <p class="h6 text-muted">By <?php the_author_posts_link(); ?> | <?php the_time( 'j F Y' ); ?></p>
         </article>
   <?php 
       endif;
@@ -376,7 +419,7 @@
 
 </div>
 
-<br>
+<hr>
 
 
 <?php get_footer(); ?>

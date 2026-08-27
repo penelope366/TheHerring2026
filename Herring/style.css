@@ -1,10 +1,10 @@
 /*
 Theme Name: Herring
-Author: Penelope Valenti, Komari Machida
+Author: The Herring Website Team 2026 (Komari Machida, Penelope Valenti)
 Version: 1.0
 */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 html {
   background-color: white;
@@ -32,6 +32,14 @@ main {
   background-color: #fbf9f3; 
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
   border-radius: 2px; 
+}
+
+.a4-landscape-img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 3508 / 2480 !important;
+  object-fit: cover !important;
+  display: block !important;
 }
 
 .grid-container {
@@ -373,13 +381,13 @@ main {
 
 
 .navbar-nav .nav-link:hover {
-  color:purple
+  color:#662d91;
 }
 
 .navbar-nav .dropdown-menu .dropdown-item:hover, 
 .navbar-nav .dropdown-menu .dropdown-item:focus {
-    background-color: white; /* Bootstrap's native purple hex code */
-    color: purple;            /* White text for contrast */
+    background-color: white; /* Bootstrap's native #662d91 hex code */
+    color: #662d91;            /* White text for contrast */
 }
 
 
@@ -408,7 +416,7 @@ main {
 }
 
 .menu li a:hover{
-    color:purple;
+    color:#662d91;
   
 }
 .submenu {
@@ -447,7 +455,7 @@ a {
 }
 
 a:hover {
-  color: purple;
+  color: #662d91;
   opacity: 0.8;
 }
 .article-page {
@@ -460,8 +468,28 @@ a:hover {
   text-decoration: underline;
 }
 
-.body-text {
+.meta-text, 
+.meta-text p,
+.meta-text a,
+.meta-text span {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.body-text, 
+.body-text p,
+.body-text span {
+  font-family: "EB Garamond", serif;
   font-size: 18px;
+}
+
+.body-text a:link {
+  font-family: "EB Garamond", serif;
+  font-size: 18px;
+  color: #662d91;
+  text-decoration: underline;
 }
 
 /* promo banner */
@@ -594,7 +622,7 @@ a:hover {
   display: block;
   padding-bottom: 10px;
   padding-top: 10px;
-  border-bottom: 1px solid purple;
+  border-bottom: 1px solid #662d91;
   transition: opacity 0.2s;
 }
 
@@ -605,7 +633,7 @@ a:hover {
 
 /* --- Back to Top Floating Button --- */
 .back-to-top {
-  position: absolute;
+  position: fixed;
   right: 25px;
   bottom: 25px;
   width: 38px;
@@ -653,3 +681,28 @@ a:hover {
   }
 
 }
+    
+      .brand-title {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+      
+      .border-top-thick {
+        border-top: 3px solid #000 !important;
+      }
+      .border-bottom-thick {
+        border-bottom: 3px solid #000 !important;
+      }
+  
+      /* Vertical divider between main feature and sidebar on Desktop */
+      @media (min-width: 768px) {
+        .border-end-md {
+          border-right: 1px solid #ccc !important;
+        }
+
+        .border-start-md {
+          border-left: 1px solid #ccc !important;
+        }
+
+      }
